@@ -55,7 +55,7 @@ samplecov - numpy.dot(A,A)
 
 # <markdowncell>
 
-# So we know can estimate $A$ by finding a $\sqrt{\text{sample covariance}}$ note, there may be more than 1 sqrt, I don't think it matters which one we find.  Since a sample covariance will always be positive semi-definite.  We can do this with eigen-decomposition.
+# So we know can estimate $A$ by finding a $\sqrt{\text{sample covariance}}$ note, there may be more than 1 sqrt, I don't think it matters which one we find.  Since a sample covariance will always be positive semi-definite, we can do this with eigen-decomposition.
 
 # <codecell>
 
@@ -76,9 +76,13 @@ numpy.sum(samplecov - numpy.dot(to_mixed_map, to_mixed_map))
 
 to_mixed_map
 
+# <codecell>
+
+A
+
 # <markdowncell>
 
-# Notice to_mixed_map is *not* the same as $A$.  But is that ok?  Does it still map a variable drawn from the standard normal to the same shape?  Let's check.
+# to_mixed_map may or may not be the same as A, depending on if we found the A in our $\sqrt{}$ operation or some other root.  In the end it doesn't matter because it will map from *some* standard normal to our distribution.
 
 # <codecell>
 
@@ -88,7 +92,7 @@ None
 
 # <markdowncell>
 
-# So it's the correct shape, even though it's not the same transformation.  That is *OK* because again, we just want a way to go from standard normal -> our mixed observable distribution
+# So it's the correct shape.
 
 # <markdowncell>
 
