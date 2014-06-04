@@ -82,7 +82,7 @@ A
 
 # <markdowncell>
 
-# to_mixed_map may or may not be the same as A, depending on if we found the A in our $\sqrt{}$ operation or some other root.  In the end it doesn't matter because it will map from *some* standard normal to our distribution.
+# to_mixed_map may or may not be an estimate of $A$ proper, depending on if we found $A$ in our $\sqrt{}$ operation or some other root.  In the end it doesn't matter because it will map from *some* standard normal to our distribution.
 
 # <codecell>
 
@@ -98,7 +98,7 @@ None
 
 # # What about finding reasonable values of our latent variables $\vec{x}$?
 # 
-# Well, $A^{-1}$ does not map to what we generated with but it does map to *some* latent variable that is drawn from a normal distributon, and that's really all we care about.
+# Well, $A^{-1}$ maps from our observed distribution to the standard normal
 
 # <codecell>
 
