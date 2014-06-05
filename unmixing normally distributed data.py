@@ -109,6 +109,7 @@ to_unmxed_map
 
 # verify that it looks like it was pulled from a standard normal
 tmp = numpy.dot(to_unmxed_map, O)
+print tmp.std(axis=1)
 plt.scatter(tmp[0,:],tmp[1,:])
 None
 
@@ -134,7 +135,30 @@ def estimate_invert(X):
 
 # <markdowncell>
 
-# # PCA does the same thing
+# # PCA does the same thing (sort of) but we don't end up with standard deviations of 1
 # 
-# More details to follow when I have a few minutes.
+# Of course, you could just z-norm the results of pca to get unit deviations
+
+# <codecell>
+
+scale,basis = linalg.eig(samplecov, left=True, right=False)
+pca = numpy.dot(numpy.diag(1.0 / scale), basis.T)
+tmp = numpy.dot(pca, O)
+plt.scatter(tmp[0,:], tmp[1,:])
+
+# <codecell>
+
+sigma = tmp.std(axis=1) # notice that the standard deviation is still not 1, but we could normalize
+sigma
+
+# <codecell>
+
+# so normalize it
+tmp[0] /= sigma[0]
+tmp[1] /= sigma[1]
+plt.scatter(tmp[0,:], tmp[1,:])
+
+# <codecell>
+
+tmp.std(axis=1)
 
