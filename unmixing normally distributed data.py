@@ -132,3 +132,9 @@ def estimate_invert(X):
     invd = numpy.diag(1.0 / evals)
     return numpy.dot(left_evecs, numpy.dot(invd, left_evecs.T))
 
+# <markdowncell>
+
+# # PCA does the same thing
+# 
+# More details to follow when I have a few minutes.
+
